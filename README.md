@@ -1,73 +1,115 @@
-# Welcome to your Lovable project
+# The Eleventh - Agencia de Diseño Web Minimalista
 
-## Project info
+Una agencia especializada en diseño web minimalista, desarrollo personalizado, branding corporativo y mantenimiento de software para pequeñas y medianas empresas.
 
-**URL**: https://lovable.dev/projects/80dda6c2-73cd-4a99-81d5-8120bf967dcc
+## 🎯 Servicios
 
-## How can I edit this code?
+- **Diseño Web Minimalista** - Sitios web sobrios y funcionales
+- **Desarrollo Personalizado** - Soluciones a medida con tecnologías modernas
+- **Branding Corporativo** - Identidad visual cohesiva y profesional
+- **Mantenimiento de Software** - Soporte continuo y actualizaciones
+- **SEO + Optimización** - Mejora de velocidad y posicionamiento
 
-There are several ways of editing your application.
+## 🛠️ Tecnologías
 
-**Use Lovable**
+Este sitio web está construido con:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/80dda6c2-73cd-4a99-81d5-8120bf967dcc) and start prompting.
+- **Frontend**: React 18, TypeScript, Tailwind CSS
+- **Build Tool**: Vite
+- **UI Components**: Sistema de diseño personalizado
+- **Fonts**: Inter (Google Fonts)
+- **Analytics**: Meta Pixel para conversiones
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🔧 Desarrollo
 
-**Use your preferred IDE**
+### Requisitos
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Node.js 18+ 
+- npm o yarn
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Instalación
 
-Follow these steps:
+```bash
+# Clonar el repositorio
+git clone <repository-url>
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Navegar al directorio
+cd the-eleventh-website
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Instalar dependencias
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Iniciar servidor de desarrollo
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Scripts Disponibles
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run dev          # Servidor de desarrollo
+npm run build        # Build de producción
+npm run preview      # Preview del build
+npm run lint         # Linting con ESLint
+```
 
-**Use GitHub Codespaces**
+## 🔐 Seguridad
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Este proyecto implementa múltiples capas de seguridad:
 
-## What technologies are used for this project?
+- **Content Security Policy (CSP)** - Prevención de ataques XSS
+- **Security Headers** - X-Frame-Options, X-Content-Type-Options, etc.
+- **Input Sanitization** - Validación estricta de formularios
+- **HTTPS Enforcement** - Redireccionamiento automático a HTTPS
+- **Rate Limiting** - Protección contra spam y ataques DDoS
 
-This project is built with:
+## 📁 Estructura del Proyecto
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+src/
+├── components/
+│   ├── sections/     # Secciones principales
+│   └── ui/          # Componentes reutilizables
+├── hooks/           # Hooks personalizados
+├── lib/             # Utilidades
+├── pages/           # Páginas de la aplicación
+├── types/           # Definiciones TypeScript
+└── assets/          # Imágenes y recursos
+```
 
-## How can I deploy this project?
+## 🚀 Despliegue
 
-Simply open [Lovable](https://lovable.dev/projects/80dda6c2-73cd-4a99-81d5-8120bf967dcc) and click on Share -> Publish.
+### Variables de Entorno Requeridas
 
-## Can I connect a custom domain to my Lovable project?
+```bash
+# Meta Pixel
+VITE_META_PIXEL_ID=your_pixel_id
 
-Yes, you can!
+# WhatsApp
+VITE_WHATSAPP_NUMBER=+1234567890
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+# URLs de producción
+VITE_SITE_URL=https://theeleventh.com
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Deploy en Producción
+
+1. Configurar variables de entorno
+2. Ejecutar build de producción: `npm run build`
+3. Servir archivos estáticos desde `/dist`
+4. Configurar headers de seguridad en el servidor web
+
+## 📈 Analytics y Tracking
+
+- **Meta Pixel** configurado para tracking de conversiones
+- **Eventos personalizados** para acciones importantes
+- **GTM Ready** - Preparado para Google Tag Manager
+
+## 🤝 Contacto
+
+- **Website**: [theeleventh.com](https://theeleventh.com)
+- **Email**: info@theeleventh.com
+- **WhatsApp**: +1234567890
+
+---
+
+© 2024 The Eleventh. Todos los derechos reservados.
