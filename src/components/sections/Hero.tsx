@@ -23,7 +23,7 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-foreground leading-tight text-balance">
-                Diseño web <span className="font-medium">minimalista</span> para empresas que buscan{" "}
+                Diseño web <span className="font-medium">profesional</span> para empresas que buscan{" "}
                 <span className="font-medium">resultados</span>
               </h1>
               
@@ -63,7 +63,7 @@ const Hero = () => {
             <div className="aspect-[4/3] rounded-sm overflow-hidden bg-muted">
               <img
                 src={heroImage}
-                alt="Espacio de trabajo minimalista con diseños web profesionales"
+                alt="Espacio de trabajo con diseños web profesionales"
                 className="w-full h-full object-cover"
               />
             </div>
