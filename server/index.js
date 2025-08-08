@@ -1,34 +1,58 @@
+// index.js
 const express = require('express');
 const cors = require('cors');
-const mysql = require('mysql2');
 require('dotenv').config();
 
+const pool = require('./db'); // <- usamos el pool exportado desde db.js
+
+
 const app = express();
-app.use(cors());
+app.use(cors({ origin: true }));
 app.use(express.json());
 
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-});
+// Ruta raíz opcional
+app.get('/', (_req, res) => res.json({ ok: true, message: 'API funcionando' }));
 
-db.connect(err => {
-  if (err) {
-    console.error('❌ Error al conectar a MySQL:', err);
-  } else {
-    console.log('✅ Conexión a MySQL exitosa');
+// Healthcheck
+app.get('/health', async (_req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT 1 AS ok');
+    res.json({ ok: true, db: rows[0].ok === 1 });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: e?.message || e });
   }
 });
 
-app.post('/api/contacto', (req, res) => {
-  const { nombre, email, mensaje } = req.body;
-  const query = 'INSERT INTO contacto (nombre, email, mensaje) VALUES (?, ?, ?)';
-  db.query(query, [nombre, email, mensaje], (err, result) => {
-    if (err) return res.status(500).json({ error: err });
+// Insert de contacto
+app.post('/api/contacto', async (req, res) => {
+  try {
+    const { nombre, email, mensaje } = req.body;
+    if (!nombre || !email || !mensaje) {
+      return res.status(400).json({ error: 'Faltan campos' });
+    }
+
+    // Si tu tabla se llama `mensajes_contacto`, cambia 'contacto' -> 'mensajes_contacto'
+    await pool.query(
+      'INSERT INTO contacto (nombre, email, mensaje) VALUES (?, ?, ?)',
+      [nombre, email, mensaje]
+    );
+
     res.status(200).json({ message: '✅ Mensaje guardado correctamente' });
-  });
+  } catch (err) {
+    res.status(500).json({ error: err?.sqlMessage || err?.message || String(err) });
+  }
+});
+
+// (Opcional) listar últimos 50 para debug
+app.get('/api/contacto', async (_req, res) => {
+  try {
+    const [rows] = await pool.query(
+      'SELECT id, nombre, email, mensaje, created_at AS fecha_envio FROM contacto ORDER BY id DESC LIMIT 50'
+    );
+    res.json(rows);
+  } catch (e) {
+    res.status(500).json({ error: e?.sqlMessage || e?.message || String(e) });
+  }
 });
 
 const PORT = process.env.PORT || 3001;
