@@ -1,20 +1,23 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navigationItems = [
-    { name: "Inicio", href: "#inicio" },
-    { name: "Servicios", href: "#servicios" },
-    { name: "Proceso", href: "#proceso" },
-    { name: "Tecnologías", href: "#tecnologias" },
-    { name: "Proyectos", href: "#proyectos" },
-    { name: "Testimonios", href: "#testimonios" },
-    { name: "Nosotros", href: "#nosotros" },
-    { name: "FAQ", href: "#faq" },
-    { name: "Contacto", href: "#contacto" },
+    { name: "Inicio", href: "/" },
+    { name: "Servicios", href: "/servicios" },
+    { name: "Proceso", href: "/proceso" },
+    { name: "Tecnologías", href: "/tecnologias" },
+    { name: "Proyectos", href: "/proyectos" },
+    { name: "Testimonios", href: "/testimonios" },
+    { name: "Nosotros", href: "/nosotros" },
+    { name: "FAQ", href: "/faq" },
+    { name: "Contacto", href: "/contacto" },
   ];
 
   const handleNavClick = (href: string) => {
@@ -22,14 +25,11 @@ const Navigation = () => {
     
     // Track navigation events
     if (typeof window !== 'undefined' && window.fbq) {
-      window.fbq('track', 'ViewContent', { content_name: href.replace('#', '') });
+      window.fbq('track', 'ViewContent', { content_name: href.replace('/', '') || 'home' });
     }
     
-    // Smooth scroll to section
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Navigate to route
+    navigate(href);
   };
 
   return (
@@ -38,9 +38,12 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <span className="text-xl font-semibold text-foreground">
+            <button 
+              onClick={() => navigate('/')}
+              className="text-xl font-semibold text-foreground hover:text-foreground/80 transition-smooth"
+            >
               The Eleventh
-            </span>
+            </button>
           </div>
 
           {/* Desktop Navigation */}
@@ -50,7 +53,12 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-muted-foreground hover:text-foreground transition-smooth text-sm font-medium"
+                  className={cn(
+                    "text-sm font-medium transition-smooth",
+                    location.pathname === item.href 
+                      ? "text-foreground" 
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
                 >
                   {item.name}
                 </button>
@@ -78,7 +86,12 @@ const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
-                className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-smooth w-full text-left"
+                className={cn(
+                  "block px-3 py-2 text-base font-medium transition-smooth w-full text-left",
+                  location.pathname === item.href 
+                    ? "text-foreground bg-accent" 
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                )}
               >
                 {item.name}
               </button>
