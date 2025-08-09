@@ -54,7 +54,7 @@ const FAQ = () => {
       <div className="max-w-4xl mx-auto">
         <div className="text-center space-y-6 mb-20">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground text-balance">
-            Preguntas <span className="font-medium">frecuentes</span>
+            Preguntas <span className="font-medium text-primary">frecuentes</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Resolvemos las dudas más comunes sobre nuestros servicios y proceso de trabajo.
@@ -66,7 +66,7 @@ const FAQ = () => {
             <AccordionItem 
               key={index} 
               value={`item-${index}`}
-              className="border border-border rounded-sm px-6 hover:bg-accent/50 transition-smooth"
+              className="border border-border rounded-sm px-6 hover:bg-accent/50 hover:border-primary/20 transition-smooth"
             >
               <AccordionTrigger className="text-left hover:no-underline py-6">
                 <span className="font-medium text-foreground pr-4">
@@ -93,7 +93,7 @@ const FAQ = () => {
             onClick={() => {
               document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-smooth font-medium"
+            className="inline-flex items-center gap-2 text-primary hover:text-primary-light transition-smooth font-medium underline-offset-4 hover:underline"
           >
             Contáctanos directamente
           </button>

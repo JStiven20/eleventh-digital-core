@@ -58,7 +58,7 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center space-y-6 mb-20">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground text-balance">
-            Clientes <span className="font-medium">satisfechos</span>
+            Clientes <span className="font-medium text-primary">satisfechos</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             La confianza de nuestros clientes es nuestra mejor carta de presentación. 
@@ -68,7 +68,7 @@ const Testimonials = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="border-border hover:border-primary/20 transition-smooth">
+            <Card key={index} className="border-border hover:border-primary/20 hover:shadow-primary transition-smooth">
               <CardContent className="p-8 space-y-6">
                 <div className="flex items-center gap-1">
                   {[...Array(testimonial.rating)].map((_, starIndex) => (
@@ -110,10 +110,10 @@ const Testimonials = () => {
         </div>
 
         <div className="mt-16 text-center space-y-6">
-          <div className="inline-flex items-center gap-4 px-6 py-3 bg-background border border-border rounded-full">
+          <div className="inline-flex items-center gap-4 px-6 py-3 bg-background border border-primary/20 rounded-full shadow-primary">
             <div className="flex items-center gap-1">
-              <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-              <span className="font-medium text-foreground">4.9/5</span>
+              <Star className="w-5 h-5 fill-primary text-primary" />
+              <span className="font-medium text-primary">4.9/5</span>
             </div>
             <div className="w-px h-4 bg-border" />
             <span className="text-sm text-muted-foreground">

@@ -52,7 +52,7 @@ const Technologies = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center space-y-6 mb-20">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground text-balance">
-            Tecnologías <span className="font-medium">modernas</span>
+            Tecnologías <span className="font-medium text-primary">modernas</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Utilizamos las herramientas más avanzadas y confiables del mercado para 
@@ -64,7 +64,7 @@ const Technologies = () => {
           {categories.map((category, index) => (
             <div 
               key={index}
-              className="space-y-6 p-8 rounded-sm border border-border hover:bg-accent/50 transition-smooth"
+              className="space-y-6 p-8 rounded-sm border border-border hover:bg-accent/50 hover:border-primary/20 hover:shadow-primary transition-smooth"
             >
               <div className="space-y-3">
                 <h3 className="text-xl font-medium text-foreground">
@@ -91,8 +91,8 @@ const Technologies = () => {
         </div>
 
         <div className="mt-16 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-muted/50 rounded-full">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-muted/50 rounded-full border border-primary/10">
+            <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
             <span className="text-sm text-muted-foreground">
               Stack actualizado constantemente
             </span>

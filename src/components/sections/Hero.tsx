@@ -23,12 +23,12 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-foreground leading-tight text-balance">
-                Diseño web <span className="font-medium">profesional</span> para empresas que buscan{" "}
-                <span className="font-medium">resultados</span>
+                Diseño web <span className="font-medium text-primary">profesional</span> para empresas que buscan{" "}
+                <span className="font-medium text-primary">resultados</span>
               </h1>
               
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg">
-                Creamos soluciones digitales sobrias, funcionales y completamente optimizadas 
+                Creamos soluciones digitales sobrias, funcionales y <span className="text-primary font-medium">completamente optimizadas</span>
                 para pequeñas y medianas empresas.
               </p>
             </div>
@@ -36,8 +36,9 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg" 
+                variant="premium"
                 onClick={handleCTA}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 transition-smooth text-base px-8 py-3"
+                className="text-base px-8 py-3"
               >
                 Comenzar proyecto
               </Button>

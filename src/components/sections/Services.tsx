@@ -124,7 +124,7 @@ const Services = () => {
         {/* Header */}
         <div className="text-center space-y-6 mb-20">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground text-balance">
-            Servicios que <span className="font-medium">impulsan</span> tu negocio
+            Servicios que <span className="font-medium text-primary">impulsan</span> tu negocio
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Soluciones digitales completas diseñadas para empresas que buscan 
@@ -135,7 +135,7 @@ const Services = () => {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {services.map((service, index) => (
-            <Card key={index} className="border-border hover:bg-accent/50 transition-smooth group">
+            <Card key={index} className="border-border hover:bg-accent/50 hover:border-primary/20 transition-smooth group hover:shadow-primary">
               <CardHeader className="space-y-4">
                 <div className="w-12 h-12 rounded-sm bg-muted flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
                   <service.icon className="w-6 h-6" />
@@ -159,7 +159,7 @@ const Services = () => {
                   ))}
                 </ul>
                 <div className="pt-4 border-t border-border">
-                  <p className="text-lg font-medium text-foreground">{service.basePrice}</p>
+                  <p className="text-lg font-medium text-primary">{service.basePrice}</p>
                 </div>
               </CardContent>
             </Card>
@@ -170,7 +170,7 @@ const Services = () => {
         <div className="space-y-12">
           <div className="text-center space-y-4">
             <h3 className="text-2xl md:text-3xl font-light text-foreground">
-              Paquetes <span className="font-medium">integrales</span>
+              Paquetes <span className="font-medium text-primary">integrales</span>
             </h3>
             <p className="text-muted-foreground max-w-xl mx-auto">
               Combinaciones perfectas de nuestros servicios para diferentes necesidades empresariales
@@ -181,8 +181,8 @@ const Services = () => {
             {packages.map((pkg, index) => (
               <Card 
                 key={index} 
-                className={`relative border-border hover:border-primary/20 transition-smooth ${
-                  pkg.popular ? 'ring-2 ring-primary/10 bg-accent/30' : ''
+                className={`relative border-border hover:border-primary/20 transition-smooth hover:shadow-primary ${
+                  pkg.popular ? 'ring-2 ring-primary/20 bg-accent/30 shadow-primary' : ''
                 }`}
               >
                 {pkg.popular && (
@@ -239,7 +239,7 @@ const Services = () => {
         {/* CTA Section */}
         <div className="text-center mt-20 space-y-6">
           <h3 className="text-xl font-medium text-foreground">
-            ¿Necesitas algo específico?
+            ¿Necesitas algo <span className="text-primary">específico</span>?
           </h3>
           <p className="text-muted-foreground max-w-md mx-auto">
             Cada proyecto es único. Hablemos sobre tus necesidades específicas y creemos una solución a medida.

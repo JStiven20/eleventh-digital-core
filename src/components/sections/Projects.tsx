@@ -32,7 +32,7 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center space-y-6 mb-20">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground text-balance">
-            Proyectos que <span className="font-medium">generan</span> resultados
+            Proyectos que <span className="font-medium text-primary">generan</span> resultados
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Cada proyecto está diseñado con un objetivo claro: impulsar el crecimiento 
@@ -44,7 +44,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div 
               key={index}
-              className="group bg-background rounded-sm border border-border overflow-hidden hover:shadow-lg transition-smooth"
+              className="group bg-background rounded-sm border border-border overflow-hidden hover:shadow-primary hover:border-primary/20 transition-smooth"
             >
               <div className="aspect-[4/3] overflow-hidden bg-muted">
                 <img
@@ -57,7 +57,7 @@ const Projects = () => {
               <div className="p-6 space-y-4">
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                    <span className="text-xs text-primary font-medium uppercase tracking-wider">
                       {project.category}
                     </span>
                   </div>

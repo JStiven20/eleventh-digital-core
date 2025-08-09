@@ -26,12 +26,12 @@ const About = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground text-balance">
-                Filosofía de <span className="font-medium">diseño</span>
+                Filosofía de <span className="font-medium text-primary">diseño</span>
               </h2>
               
               <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
-                  En <strong className="text-foreground font-medium">The Eleventh</strong>, 
+                  En <strong className="text-primary font-medium">The Eleventh</strong>, 
                   entendemos que el diseño web no es solo estética: es una herramienta 
                   estratégica para el crecimiento empresarial.
                 </p>
@@ -54,7 +54,7 @@ const About = () => {
           {/* Values */}
           <div className="space-y-8">
             <h3 className="text-2xl md:text-3xl font-light text-foreground">
-              Nuestros <span className="font-medium">valores</span>
+              Nuestros <span className="font-medium text-primary">valores</span>
             </h3>
             
             <div className="space-y-6">
@@ -67,7 +67,7 @@ const About = () => {
                     {value.description}
                   </p>
                   {index < values.length - 1 && (
-                    <div className="w-12 h-px bg-border mt-6" />
+                    <div className="w-12 h-px bg-primary/30 mt-6" />
                   )}
                 </div>
               ))}

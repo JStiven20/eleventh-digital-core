@@ -138,7 +138,7 @@ const Contact = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground">
-                Hablemos de tu <span className="font-medium">proyecto</span>
+                Hablemos de tu <span className="font-medium text-primary">proyecto</span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Estamos listos para ayudarte a crear la solución digital que tu empresa necesita.
@@ -148,8 +148,9 @@ const Contact = () => {
             <Button
               onClick={handleWhatsAppClick}
               data-event="ContactWhatsApp"
-              className="inline-flex items-center gap-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-smooth"
+              variant="premium"
               size="lg"
+              className="inline-flex items-center gap-3"
             >
               <MessageCircle className="w-5 h-5" />
               Chatear por WhatsApp
@@ -164,10 +165,10 @@ const Contact = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-10 h-10 rounded-sm border border-border hover:bg-accent transition-smooth group"
+                    className="flex items-center justify-center w-10 h-10 rounded-sm border border-border hover:bg-primary hover:border-primary transition-smooth group"
                     title={social.handle}
                   >
-                    <social.icon className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-smooth" />
+                    <social.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary-foreground transition-smooth" />
                   </a>
                 ))}
               </div>

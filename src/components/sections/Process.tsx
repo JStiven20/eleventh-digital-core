@@ -39,7 +39,7 @@ const Process = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center space-y-6 mb-20">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground text-balance">
-            Nuestro <span className="font-medium">proceso</span>
+            Nuestro <span className="font-medium text-primary">proceso</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Un método probado que garantiza resultados excepcionales en cada proyecto, 
@@ -52,7 +52,7 @@ const Process = () => {
             <div key={index} className="relative">
               {/* Connection line */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-6 left-full w-full h-px bg-border z-0" />
+                <div className="hidden lg:block absolute top-6 left-full w-full h-px bg-primary/20 z-0" />
               )}
               
               <div className="relative z-10 space-y-4">
