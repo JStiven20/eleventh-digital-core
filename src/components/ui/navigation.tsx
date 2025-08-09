@@ -8,8 +8,12 @@ const Navigation = () => {
   const navigationItems = [
     { name: "Inicio", href: "#inicio" },
     { name: "Servicios", href: "#servicios" },
+    { name: "Proceso", href: "#proceso" },
+    { name: "Tecnologías", href: "#tecnologias" },
     { name: "Proyectos", href: "#proyectos" },
+    { name: "Testimonios", href: "#testimonios" },
     { name: "Nosotros", href: "#nosotros" },
+    { name: "FAQ", href: "#faq" },
     { name: "Contacto", href: "#contacto" },
   ];
 
