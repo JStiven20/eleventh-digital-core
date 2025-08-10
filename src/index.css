@@ -173,3 +173,35 @@ All colors MUST be HSL.
     color: hsl(var(--primary));
   }
 }
+
+/* Animation utilities and subtle motion system */
+@layer utilities {
+  /* Fade In */
+  @keyframes fade-in {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out both;
+  }
+
+  /* Hover microinteraction */
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+  .hover-scale:hover {
+    transform: translateZ(0) scale(1.02);
+  }
+
+  /* Animated gradient background for subtle depth */
+  @keyframes gradient-move {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .animated-gradient {
+    background: linear-gradient(120deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 50%, hsl(var(--primary)) 100%);
+    background-size: 200% 200%;
+    animation: gradient-move 8s ease-in-out infinite;
+  }
+}

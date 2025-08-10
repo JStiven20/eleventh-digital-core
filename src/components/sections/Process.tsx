@@ -1,4 +1,5 @@
 import { Clock, MessageCircle, Palette, Code, Rocket, BarChart } from "lucide-react";
+import useReveal from "@/hooks/useReveal";
 
 const Process = () => {
   const steps = [
@@ -34,10 +35,44 @@ const Process = () => {
     }
   ];
 
+  const StepCard: React.FC<{ step: typeof steps[number]; index: number }> = ({ step, index }) => {
+    const { ref, isVisible } = useReveal({ threshold: 0.2 });
+    return (
+      <div ref={ref} className={`relative ${isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-2'}`} style={{ animationDelay: `${index * 80}ms` }}>
+        {/* Connection line */}
+        {index < steps.length - 1 && (
+          <div className="hidden lg:block absolute top-6 left-full w-full h-px bg-primary/20 z-0" />
+        )}
+        
+        <div className="relative z-10 space-y-4">
+          <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-medium text-sm">
+            <step.icon className="w-5 h-5" />
+          </div>
+          
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <h3 className="text-lg font-medium text-foreground">
+                {step.title}
+              </h3>
+              <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                <Clock className="w-3 h-3" />
+                {step.duration}
+              </div>
+            </div>
+            
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <section id="proceso" className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center space-y-6 mb-20">
+        <div className="text-center space-y-6 mb-20 animate-fade-in">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground text-balance">
             Nuestro <span className="font-medium text-primary">proceso</span>
           </h2>
@@ -49,34 +84,7 @@ const Process = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {steps.map((step, index) => (
-            <div key={index} className="relative">
-              {/* Connection line */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-6 left-full w-full h-px bg-primary/20 z-0" />
-              )}
-              
-              <div className="relative z-10 space-y-4">
-                <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-medium text-sm">
-                  <step.icon className="w-5 h-5" />
-                </div>
-                
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-lg font-medium text-foreground">
-                      {step.title}
-                    </h3>
-                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                      <Clock className="w-3 h-3" />
-                      {step.duration}
-                    </div>
-                  </div>
-                  
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <StepCard key={index} step={step} index={index} />
           ))}
         </div>
 

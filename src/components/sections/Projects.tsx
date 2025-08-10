@@ -1,9 +1,66 @@
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
+import useReveal from "@/hooks/useReveal";
+
+type Project = {
+  title: string;
+  description: string;
+  category: string;
+  image: string;
+  technologies: string[];
+};
+
+const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
+  const { ref, isVisible } = useReveal({ threshold: 0.2 });
+  return (
+    <div
+      ref={ref}
+      className={`group bg-background rounded-sm border border-border overflow-hidden hover:shadow-primary hover:border-primary/20 transition-smooth hover-scale ${isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-2'}`}
+      style={{ animationDelay: `${index * 80}ms` }}
+    >
+      <div className="aspect-[4/3] overflow-hidden bg-muted">
+        <img
+          src={project.image}
+          alt={`Captura de pantalla del proyecto ${project.title}`}
+          className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
+        />
+      </div>
+      
+      <div className="p-6 space-y-4">
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-primary font-medium uppercase tracking-wider">
+              {project.category}
+            </span>
+          </div>
+          
+          <h3 className="text-lg font-medium text-foreground">
+            {project.title}
+          </h3>
+          
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            {project.description}
+          </p>
+        </div>
+        
+        <div className="flex flex-wrap gap-2">
+          {project.technologies.map((tech, idx) => (
+            <span 
+              key={idx}
+              className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded-sm"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Projects = () => {
-  const projects = [
+  const projects: Project[] = [
     {
       title: "Comercio Electrónico Minimalista",
       description: "Plataforma de e-commerce con diseño limpio y experiencia de compra optimizada. Incremento del 40% en conversiones.",
@@ -42,47 +99,7 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div 
-              key={index}
-              className="group bg-background rounded-sm border border-border overflow-hidden hover:shadow-primary hover:border-primary/20 transition-smooth"
-            >
-              <div className="aspect-[4/3] overflow-hidden bg-muted">
-                <img
-                  src={project.image}
-                  alt={`Captura de pantalla del proyecto ${project.title}`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
-                />
-              </div>
-              
-              <div className="p-6 space-y-4">
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-primary font-medium uppercase tracking-wider">
-                      {project.category}
-                    </span>
-                  </div>
-                  
-                  <h3 className="text-lg font-medium text-foreground">
-                    {project.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-                
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, idx) => (
-                    <span 
-                      key={idx}
-                      className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
       </div>

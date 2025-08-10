@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main>
+      <main className="animate-fade-in">
         <Hero />
       </main>
       <Footer />
