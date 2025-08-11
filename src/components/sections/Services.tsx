@@ -1,9 +1,10 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Monitor, Code, Palette, Settings, Search, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-
 const Services = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     // Track services view
     const observer = new IntersectionObserver(
@@ -215,17 +216,17 @@ const Services = () => {
                     ))}
                   </ul>
 
-                  <Button 
+<Button 
                     className="w-full"
                     variant={pkg.popular ? "default" : "outline"}
                     onClick={() => {
-                      if (typeof window !== 'undefined' && window.fbq) {
-                        window.fbq('track', 'AddToCart', { 
+                      if (typeof window !== 'undefined' && (window as any).fbq) {
+                        (window as any).fbq('track', 'AddToCart', { 
                           content_name: pkg.name,
                           value: pkg.price === 'Personalizado' ? 0 : parseInt(pkg.price.replace(/[€,]/g, ''))
                         });
                       }
-                      document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+                      navigate('/contacto');
                     }}
                   >
                     {pkg.cta}
@@ -244,11 +245,9 @@ const Services = () => {
           <p className="text-muted-foreground max-w-md mx-auto">
             Cada proyecto es único. Hablemos sobre tus necesidades específicas y creemos una solución a medida.
           </p>
-          <Button 
+<Button 
             variant="outline"
-            onClick={() => {
-              document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={() => navigate('/contacto')}
           >
             Solicitar Consulta Gratuita
           </Button>

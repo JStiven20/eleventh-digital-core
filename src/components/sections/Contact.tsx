@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Instagram, Linkedin, Twitter, MessageCircle, Shield } from "lucide-react";
+import { Instagram, Facebook, Music2, MessageCircle, Shield } from "lucide-react";
 import { useSecurity } from "@/hooks/use-security";
 
 const Contact = () => {
@@ -124,10 +124,10 @@ const Contact = () => {
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
   };
 
-  const socialLinks = [
+const socialLinks = [
     { name: "Instagram", icon: Instagram, url: "https://instagram.com/theeleventh", handle: "@theeleventh" },
-    { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/company/theeleventh", handle: "The Eleventh" },
-    { name: "Twitter", icon: Twitter, url: "https://twitter.com/theeleventh", handle: "@theeleventh" },
+    { name: "Facebook", icon: Facebook, url: "https://facebook.com/theeleventh", handle: "The Eleventh" },
+    { name: "TikTok", icon: Music2, url: "https://www.tiktok.com/@theeleventh", handle: "@theeleventh" },
   ];
 
   return (

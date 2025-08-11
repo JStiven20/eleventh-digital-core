@@ -1,22 +1,25 @@
+import { useNavigate } from "react-router-dom";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
 
   const footerLinks = [
     {
       title: "Servicios",
       links: [
-        { name: "Diseño Web", href: "#servicios" },
-        { name: "Desarrollo", href: "#servicios" },
-        { name: "Branding", href: "#servicios" },
-        { name: "Mantenimiento", href: "#servicios" }
+        { name: "Diseño Web", href: "/servicios" },
+        { name: "Desarrollo", href: "/servicios" },
+        { name: "Branding", href: "/servicios" },
+        { name: "Mantenimiento", href: "/servicios" }
       ]
     },
     {
       title: "Empresa",
       links: [
-        { name: "Nosotros", href: "#nosotros" },
-        { name: "Proyectos", href: "#proyectos" },
-        { name: "Contacto", href: "#contacto" }
+        { name: "Nosotros", href: "/nosotros" },
+        { name: "Proyectos", href: "/proyectos" },
+        { name: "Contacto", href: "/contacto" }
       ]
     },
     {
@@ -30,11 +33,27 @@ const Footer = () => {
   ];
 
   const handleLinkClick = (href: string) => {
+    if (href.startsWith('/')) {
+      navigate(href);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     if (href.startsWith('#')) {
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        const routeMap: Record<string, string> = {
+          '#servicios': '/servicios',
+          '#nosotros': '/nosotros',
+          '#proyectos': '/proyectos',
+          '#contacto': '/contacto',
+        };
+        const route = routeMap[href];
+        if (route) navigate(route);
       }
+    } else {
+      window.location.href = href;
     }
   };
 

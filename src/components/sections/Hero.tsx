@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-image.jpg";
 import useReveal from "@/hooks/useReveal";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const { ref: contentRef, isVisible: contentVisible } = useReveal({ threshold: 0.2 });
   const [offset, setOffset] = useState(0);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY || 0;
@@ -16,17 +17,13 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleCTA = () => {
+const handleCTA = () => {
     // Track CTA click
-    if (typeof window !== 'undefined' && window.fbq) {
-      window.fbq('track', 'Lead');
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'Lead');
     }
-    
-    // Scroll to contact section
-    const contactSection = document.querySelector('#contacto');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Navigate to contact page
+    navigate('/contacto');
   };
 
   return (
@@ -57,15 +54,10 @@ const Hero = () => {
                 Comenzar proyecto
               </Button>
               
-              <Button 
+<Button 
                 variant="outline" 
                 size="lg"
-                onClick={() => {
-                  const serviciosSection = document.querySelector('#servicios');
-                  if (serviciosSection) {
-                    serviciosSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+                onClick={() => navigate('/servicios')}
                 className="text-base px-8 py-3"
               >
                 Ver servicios
