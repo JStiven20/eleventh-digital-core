@@ -16,7 +16,7 @@ const FloatingWhatsApp = () => {
     }
     
     const message = encodeURIComponent("Hola, me interesa conocer más sobre sus servicios de diseño web minimalista.");
-    const phoneNumber = "+1234567890"; // Reemplazar con número real
+    const phoneNumber = "34672529065"; // Número de WhatsApp España
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
@@ -42,7 +42,7 @@ const FloatingWhatsApp = () => {
           onClick={handleWhatsAppClick}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white shadow-lg hover:shadow-xl transition-all duration-300 p-0 flex items-center justify-center group-hover:scale-110"
+          className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white shadow-lg hover:shadow-xl transition-all duration-300 p-0 flex items-center justify-center group-hover:scale-110 cursor-pointer"
           aria-label="Contactar por WhatsApp"
         >
           <MessageCircle className="w-7 h-7" />
@@ -51,7 +51,7 @@ const FloatingWhatsApp = () => {
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute -top-2 -right-2 w-6 h-6 bg-muted border border-border rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-accent"
+          className="absolute -top-2 -right-2 w-6 h-6 bg-muted border border-border rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-accent cursor-pointer"
           aria-label="Cerrar chat"
         >
           <X className="w-3 h-3 text-muted-foreground" />
