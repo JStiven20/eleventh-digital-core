@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { MessageCircle, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const FloatingWhatsApp = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -38,15 +37,15 @@ const FloatingWhatsApp = () => {
 
       {/* WhatsApp Button */}
       <div className="relative group">
-        <Button
+        <button
           onClick={handleWhatsAppClick}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white shadow-lg hover:shadow-xl transition-all duration-300 p-0 flex items-center justify-center group-hover:scale-110 cursor-pointer"
+          className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white shadow-lg hover:shadow-xl transition-all duration-300 p-0 flex items-center justify-center group-hover:scale-110 cursor-pointer border-0"
           aria-label="Contactar por WhatsApp"
         >
-          <MessageCircle className="w-7 h-7" />
-        </Button>
+          <MessageCircle className="w-7 h-7 pointer-events-none" />
+        </button>
 
         {/* Close button */}
         <button
