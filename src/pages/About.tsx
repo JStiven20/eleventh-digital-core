@@ -1,4 +1,5 @@
 import useSEO from '@/hooks/useSEO';
+import { seoConfig } from '@/data/seo-config';
 import Navigation from "@/components/ui/navigation";
 import About from "@/components/sections/About";
 import Footer from "@/components/ui/footer";

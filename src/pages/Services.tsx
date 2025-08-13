@@ -1,19 +1,12 @@
 import useSEO from '@/hooks/useSEO';
+import { seoConfig } from '@/data/seo-config';
 import Navigation from "@/components/ui/navigation";
 import Services from "@/components/sections/Services";
 import Footer from "@/components/ui/footer";
 import FloatingWhatsApp from "@/components/ui/floating-whatsapp";
 
 const ServicesPage = () => {
-  useSEO({
-    title: "Servicios - Diseño Web, Desarrollo y Branding | The Eleventh",
-    description: "Servicios profesionales de diseño web, desarrollo personalizado, branding corporativo, mantenimiento y SEO. Paquetes desde €1,299 con garantía incluida.",
-    keywords: "servicios diseño web, desarrollo personalizado, branding corporativo, mantenimiento web, SEO, precios diseño web",
-    canonical: "https://theeleventh.com/servicios",
-    ogTitle: "Servicios - Diseño Web, Desarrollo y Branding | The Eleventh",
-    ogDescription: "Servicios profesionales de diseño web, desarrollo personalizado y branding corporativo. Paquetes desde €1,299.",
-    ogUrl: "https://theeleventh.com/servicios"
-  });
+  useSEO(seoConfig.pages.services);
   return (
     <div className="min-h-screen bg-background">
       <Navigation />

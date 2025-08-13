@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Monitor, Code, Palette, Settings, Search, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import ServiceStructuredData from "@/components/structured-data/ServiceStructuredData";
 const Services = () => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -253,6 +254,13 @@ const Services = () => {
           </Button>
         </div>
       </div>
+      
+      <ServiceStructuredData services={services.map(service => ({
+        name: service.title,
+        description: service.description,
+        price: service.basePrice,
+        category: service.category
+      }))} />
     </section>
   );
 };

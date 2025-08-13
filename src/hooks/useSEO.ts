@@ -8,9 +8,10 @@ interface SEOProps {
   ogTitle?: string;
   ogDescription?: string;
   ogUrl?: string;
+  structuredData?: object;
 }
 
-const useSEO = ({ title, description, keywords, canonical, ogTitle, ogDescription, ogUrl }: SEOProps) => {
+const useSEO = ({ title, description, keywords, canonical, ogTitle, ogDescription, ogUrl, structuredData }: SEOProps) => {
   useEffect(() => {
     // Set document title
     document.title = title;
@@ -59,7 +60,20 @@ const useSEO = ({ title, description, keywords, canonical, ogTitle, ogDescriptio
     // Set canonical URL
     setCanonical(canonical);
 
-  }, [title, description, keywords, canonical, ogTitle, ogDescription, ogUrl]);
+    // Add structured data if provided
+    if (structuredData) {
+      let script = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
+      
+      if (!script) {
+        script = document.createElement('script');
+        script.type = 'application/ld+json';
+        document.head.appendChild(script);
+      }
+      
+      script.textContent = JSON.stringify(structuredData);
+    }
+
+  }, [title, description, keywords, canonical, ogTitle, ogDescription, ogUrl, structuredData]);
 };
 
 export default useSEO;

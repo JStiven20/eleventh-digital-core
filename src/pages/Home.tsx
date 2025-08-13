@@ -1,24 +1,40 @@
 import useSEO from '@/hooks/useSEO';
+import { seoConfig } from '@/data/seo-config';
 import Navigation from "@/components/ui/navigation";
 import Hero from "@/components/sections/Hero";
+import Services from "@/components/sections/Services";
+import Stats from "@/components/sections/Stats";
+import Testimonials from "@/components/sections/Testimonials";
+import TrustSignals from "@/components/sections/TrustSignals";
+import CTA from "@/components/sections/CTA";
 import Footer from "@/components/ui/footer";
 import FloatingWhatsApp from "@/components/ui/floating-whatsapp";
 
 const Home = () => {
   useSEO({
-    title: "The Eleventh - Agencia de Diseño Web y Desarrollo Digital",
-    description: "Somos The Eleventh, especialistas en diseño web minimalista, desarrollo personalizado y branding corporativo. Transformamos ideas en soluciones digitales profesionales.",
-    keywords: "diseño web, desarrollo web, branding corporativo, agencia digital, sitios web profesionales",
-    canonical: "https://theeleventh.com/",
-    ogTitle: "The Eleventh - Agencia de Diseño Web y Desarrollo Digital",
-    ogDescription: "Especialistas en diseño web minimalista, desarrollo personalizado y branding corporativo.",
-    ogUrl: "https://theeleventh.com/"
+    ...seoConfig.pages.home,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": seoConfig.global.siteName,
+      "url": seoConfig.global.siteUrl,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${seoConfig.global.siteUrl}/buscar?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    }
   });
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       <main className="animate-fade-in">
         <Hero />
+        <TrustSignals />
+        <Stats />
+        <Services />
+        <Testimonials />
+        <CTA />
       </main>
       <Footer />
       <FloatingWhatsApp />

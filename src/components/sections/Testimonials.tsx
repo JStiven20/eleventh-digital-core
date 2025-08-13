@@ -1,7 +1,10 @@
 import { Star, Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import useReveal from "@/hooks/useReveal";
 
 const Testimonials = () => {
+  const { ref, isVisible } = useReveal({ threshold: 0.1 });
+  
   const testimonials = [
     {
       name: "María González",
@@ -54,9 +57,9 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonios" className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section ref={ref} id="testimonios" className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center space-y-6 mb-20">
+        <div className={`text-center space-y-6 mb-20 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground text-balance">
             Clientes <span className="font-medium text-primary">satisfechos</span>
           </h2>
@@ -66,7 +69,7 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           {testimonials.map((testimonial, index) => (
             <Card key={index} className="border-border hover:border-primary/20 hover:shadow-primary transition-smooth">
               <CardContent className="p-8 space-y-6">
